@@ -61,18 +61,20 @@ fullOrder = {}
 
 
 def addToOrder(order):
-    # print the confirmation, create a meal counter dictionary, add 1 to meal counter.
-    print('add to order')
-    fullOrderIndex=0
+
+    addedToOrder = 'false'
+    
     for key in fullOrder:
         if key == order:
-            fullOrder[key] +=1
-        
-        elif fullOrderIndex > len(fullOrder):
-            fullOrder[order] =  1
-        fullOrderIndex += 1
+            fullOrder[order] +=1
+            addedToOrder = 'true'
     
-    print('** {fullOrder[order]} order of {order} have been added to your meal **')
+    if addedToOrder == 'false':
+        print('elif')
+        fullOrder[order] =  1
+        
+    
+    print(f"** {fullOrder[order]} order of {order} have been added to your meal **")
 
 welcomeAndMenu()
 
