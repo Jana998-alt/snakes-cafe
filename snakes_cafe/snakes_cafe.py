@@ -1,8 +1,8 @@
 menu = {
-    "Appetizers": ["Wings", "Cookies", "Spring Rolls"],
-    "Entrees": ["Salmon", "Steak", "Meat Tornado", "A Literal Garden"],
+    "Appetizers": ["wings", "cookies", "spring Rolls"],
+    "Entrees": ["salmon", "steak", "meat tornado", "a literal garden"],
     "Desserts": ["Ice Cream", "Cake", "Pie"],
-    "Drinks": ["Coffee", "Tea", "Unicorn Tears"],
+    "Drinks": ["coffee", "tea", "unicorn tears"],
 }
 
 
@@ -43,18 +43,28 @@ def welcomeAndMenu():
         ** What would you like to order? **
         ***********************************"""
     )
+    foundOrder = "false"
     order = 'initial value'
     while order != 'quit':
-        order = input('>')
+        order = input('>').lower()
         for key in menu:
             for item in menu[key]:
                 if item == order:
                     addToOrder(order)
+                    foundOrder = "true"
+        
+        if foundOrder == "false":
+            print(f"Sorry, your order of {order} is not available in our menu")
                     
     
     if order == 'quit': 
-        # do something? 
-        pass
+        printOrder = ''
+        for order in fullOrder:
+            printOrder += f"{fullOrder[order]} order of {order} "
+            printOrder += "and "
+        print('you have successfuly ordered: ', printOrder.removesuffix('and '))
+        exit()
+        
 
 
 fullOrder = {}
@@ -70,7 +80,6 @@ def addToOrder(order):
             addedToOrder = 'true'
     
     if addedToOrder == 'false':
-        print('elif')
         fullOrder[order] =  1
         
     
