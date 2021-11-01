@@ -1,7 +1,7 @@
 menu = {
     "Appetizers": ["wings", "cookies", "spring Rolls"],
     "Entrees": ["salmon", "steak", "meat tornado", "a literal garden"],
-    "Desserts": ["Ice Cream", "Cake", "Pie"],
+    "Desserts": ["ice cream", "cake", "pie"],
     "Drinks": ["coffee", "tea", "unicorn tears"],
 }
 
@@ -53,7 +53,8 @@ def welcomeAndMenu():
                     addToOrder(order)
                     foundOrder = "true"
         
-        if foundOrder == "false":
+        if foundOrder == "false"  and (
+            fullOrder):
             print(f"Sorry, your order of {order} is not available in our menu")
                     
     
@@ -62,7 +63,8 @@ def welcomeAndMenu():
         for order in fullOrder:
             printOrder += f"{fullOrder[order]} order of {order} "
             printOrder += "and "
-        print('you have successfuly ordered: ', printOrder.removesuffix('and '))
+            if not fullOrder:
+                print('you have successfuly ordered: ', printOrder.removesuffix('and '))
         exit()
         
 
